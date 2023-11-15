@@ -4,14 +4,14 @@ import Header from './Header.js';
 import ImagesDisplay from './ImageDisplay';
 import MusicPlayer from './MusicPlayer';
 import VideoBackground from './VideoBackground';
-// import videoSource from './video.mp4"'; // Adjust the path
+import videoSource from './video.mp4"'; // Adjust the path
 
 const App = () => {
   const [isMuted, setIsMuted] = useState(true);
 
   return (
     <div className="App">
-      {/* <VideoBackground src={videoSource} isMuted={isMuted} /> */}
+      <VideoBackground src={videoSource} isMuted={isMuted} />
       <Header />
       <button onClick={() => setIsMuted(!isMuted)} style={styles.toggleAudioButton}>
         {isMuted ? "Unmute" : "Mute"}
