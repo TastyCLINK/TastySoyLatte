@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 40px;
+}
+
+nav a:hover {
+  color: grey;
+}
+
+.right-align-nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
