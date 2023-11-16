@@ -1,21 +1,30 @@
-import React from 'react';
-import image1 from './guywithgun.jpg'; // Adjust the path
+import React, { useState, useEffect } from 'react';
+import image1 from './guywithgun.jpg';
 import image2 from './soyboy.png';
-import image3 from './weird image 1.png'; // Adjust the path
+import image3 from './weird image 1.png';
 
 const ImagesDisplay = () => {
+  const images = [image1, image2, image3];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    // Change image at the end of each flash cycle (e.g., 1s)
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+    }, 1000); // Matches the animation duration
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div style={styles.container}>
       <div style={styles.imageContainer}>
-        <img src={image1} alt="Image 1" style={styles.image1} />
-        <img src={image2} alt="Image 2" style={styles.image} />
-        <img src={image3} alt="Image 3" style={styles.image} />
+        <img src={images[currentImage]} alt={`Image ${currentImage + 1}`} style={styles.image} />
       </div>
     </div>
   );
 }
 
-// CSS in JS
 const styles = {
   container: {
     backgroundColor: 'transparent',
@@ -33,18 +42,12 @@ const styles = {
     justifyContent: 'center',
   },
   image: {
-    backgroundColor: 'transparent',
+    borderRadius: '20px',
+    overflow: 'hidden',
     maxWidth: '100%',
     marginBottom: '20px',
-  },
-  image1: {
-    backgroundColor: 'transparent',
-    maxWidth: '120%', // Adjust the size as needed
-    marginBottom: '20px',
-    animation: 'flash 1s infinite', // Apply the flashing animation
+    animation: 'flash 1s infinite',
   }
 }
-
-
 
 export default ImagesDisplay;
