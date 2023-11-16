@@ -14,12 +14,12 @@ const ImagesDisplay = () => {
     }, 1000); // Matches the animation duration
 
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
   return (
     <div style={styles.container}>
       <div style={styles.imageContainer}>
-        <img src={images[currentImage]} alt={`Image ${currentImage + 1}`} style={styles.image} />
+        <img src={images[currentImage]} alt={`${currentImage + 1}`} style={styles.image} />
       </div>
     </div>
   );
